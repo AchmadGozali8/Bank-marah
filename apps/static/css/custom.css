@@ -1,0 +1,70 @@
+/*Button circle*/
+.btn-circle {
+  width: 49px;
+  height: 49px;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 20px;
+  line-height: 2.00;
+  border-radius: 30px;
+}
+
+.btn-circle-micro {
+  width: 19px;
+  height: 19px;
+  text-align: center;
+  padding: 1px 0;
+  font-size: 13px;
+  line-height: 0.1;
+  border-radius: 30px;
+}
+
+.btn-circle-sm {
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  padding: 2px 0;
+  font-size: 20px;
+  line-height: 1.65;
+  border-radius: 30px;
+}
+
+.btn-circle-lg {
+  width: 79px;
+  height: 79px;
+  text-align: center;
+  padding: 13px 0;
+  font-size: 30px;
+  line-height: 2.00;
+  border-radius: 70px;
+}
+
+#btn-circle-lg {
+  width: 279px;
+  height: 279px;
+  text-align: center;
+  padding: 13px 0;
+  font-size: 150px;
+  margin-top: 60px;
+  line-height: 2.00;
+  border-radius: 190px;
+}
+/*End button circle*/
+
+/*Navbar custom background color */
+.navbar-fixed-top.navbar-custom{
+    background-color:#337ab7;
+    transition: background-color 200ms linear;
+    border-color:transparent;
+}
+
+.navbar-inverse.navbar-brand{
+    color:rgba(17, 5, 5, 0.76);
+}
+
+.navbar-fixed-top.fixednav {
+    background-color:transparent;
+    transition: background-color 200ms linear;
+    border-color:transparent;
+}
+/*End navbar custom*/

@@ -1,0 +1,38 @@
+{% extends "default.html" %}
+{% block title %}Update{% endblock %}
+{% block navbar %}{% include "navbar.html" %}{% endblock %}
+
+{% block body %}
+<div class="col-sm-4"></div>
+<div class="col-sm-4" style="margin-left: 50px;" center>
+	<div class="well">
+	  	<form action="" method="POST"  enctype="multipart/form-data">
+		  	<h4>What's New</h4>
+            {% csrf_token %}
+            {{ form.anger.label }}<br>
+            {{ form.anger }}<br><br>
+            {{ form.description.label }}
+            {{ form.description}}
+            {{ form.picture_feeling }}
+            <h6 class="pull-left" id="count_message"></h6>
+        	
+        	<button class="btn btn-primary pull-right" type="submit">Post</button>
+        	<ul class="list-inline">
+        		<li>
+        			<a href=""><i class="glyphicon glyphicon-upload"></i></a>
+        		</li>
+        		<li>
+        			<a href=""><i class="glyphicon glyphicon-camera"></i></a>
+        		</li>
+        		<li>
+        			<a href=""><i class="glyphicon glyphicon-map-marker"></i></a>
+        		</li>
+        	</ul>
+        </form>
+        {% if request.path == "/update/"|add:pk|add:"/" %}
+        	<a href="/"><button class="btn btn-danger">Cancle</button></a>
+        {% endif %}
+	</div>					
+</div>
+<div class="col-sm-4"></div>
+{% endblock %}

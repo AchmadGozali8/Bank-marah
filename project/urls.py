@@ -16,18 +16,25 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 #from apps.views import Posts, PostsUpdate
-from apps.views import CreatePost, UpdatePost, DeletePost, Posts
+from django.views.generic import TemplateView
+from apps.views import CreatePost, UpdatePost, DeletePost, Home
 from django.contrib.auth import views as auth_views
 from django.conf.urls import include
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
- #   url(r'^', include('apps.api.urls')),
-    url(r'^post/$', Posts),
+#    url(r'^', include('apps.api.urls')),
+    url(r'^$', Home, name='Home'),
+    url(r'^home/$', TemplateView.as_view(template_name='home.html')),
+    url(r'^post/$', Home),
     url(r'^create/$', CreatePost),
     url(r'^admin/', admin.site.urls),
 #    url(r'^update/(?P<pk>\d+)/$', PostsUpdate.as_view()),
-    url(r'^login/$', auth_views.login, {'template_name':'login.html'}, name='login'),
-    url(r'^update/(?P<pk>\d+)/$', UpdatePost, name='update'), 
-    url(r'^post/deleted/(?P<pk>\d+)/$', DeletePost, name='delete'), 
-
-]
+    url(r'^login/$', auth_views.login, {'template_name':'login.html'},
+        name='login'),
+    url(r'^logout/$', auth_views.logout, {'next_page':'/login/'}),
+    url(r'^update/(?P<pk>\d+)/$', UpdatePost, name='update'),
+    url(r'^deleted/(?P<pk>\d+)/$', DeletePost, name='delete'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

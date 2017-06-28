@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <div class="col-sm-4 well sidebar-wrapper">
+        <form action="/create/" method="POST">
+            {% csrf_token %}
+            {{ form.anger.label }}<br>
+            {{ form.anger }}<br><br>
+            {{ form.description.label }}
+            {{ form.description}}
+            <h6 class="pull-left" id="count_message"></h6>
+            <input type="submit" value="Submit" class="btn btn-info pull-right" style="margin-top:20px; "  />
+        </form>
+    </div>
+    {% for p in post %}
+    <div class="col-sm-8 pull-right">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="background-color: {{p.anger.color}};">
+                {{p.anger}} Level 
+            </div   >
+            <div class="panel-body">
+                {{p.description}}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if post.has_previous %}
+            <a href="?{{page_request}}={{ post.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ post.number }} of {{ post.paginator.num_pages }}.
+        </span>
+
+        {% if post.has_next %}
+            <a href="?{{page_request}}={{ post.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

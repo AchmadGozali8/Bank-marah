@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
-
+import os
 DELETED = 1
 NOT_DELETED = 0
 
@@ -38,6 +38,8 @@ class Post(models.Model):
     user = models.ForeignKey(User, db_column='user')
     anger = models.ForeignKey(Anger, related_name='anger_level')
     description = models.CharField(max_length=255)
+    title = models.CharField(max_length=100, null=True, db_column='title')
+    picture_feeling = models.ImageField(upload_to="image/%Y/%m/%d", null=True)
     deleted = models.IntegerField(
         choices=DELETED_STATUS, default=NOT_DELETED
     )
